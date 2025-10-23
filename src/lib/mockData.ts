@@ -70,3 +70,25 @@ export const mockMarketConcentration = [
   { name: "Company E", value: 8 },
   { name: "Others", value: 25 },
 ];
+
+export const mockMarketBalance = [
+  { month: "Jan", supply: 4200, demand: 4000 },
+  { month: "Feb", supply: 4400, demand: 4100 },
+  { month: "Mar", supply: 4600, demand: 4300 },
+  { month: "Apr", supply: 4800, demand: 4500 },
+  { month: "May", supply: 5000, demand: 4700 },
+  { month: "Jun", supply: 5200, demand: 4900 },
+  { month: "Jul", supply: 5400, demand: 5100 },
+  { month: "Aug", supply: 5600, demand: 5300 },
+  { month: "Sep", supply: 5800, demand: 5500 },
+  { month: "Oct", supply: 6000, demand: 5700 },
+];
+
+export const mockCompetitiveMetrics = [
+  { metric: "Market Diversity", current: 75, previous: 68 },
+  { metric: "Price Competitiveness", current: 82, previous: 76 },
+  { metric: "Quality Standards", current: 88, previous: 85 },
+  { metric: "Innovation Rate", current: 65, previous: 58 },
+  { metric: "Market Access", current: 78, previous: 72 },
+  { metric: "Regulatory Compliance", current: 92, previous: 90 },
+];
