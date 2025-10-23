@@ -11,6 +11,7 @@ import {
   PieChart as PieChartIcon,
   Calendar as CalendarIcon
 } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {
   LineChart,
   Line,
@@ -35,19 +36,34 @@ import {
 } from "recharts";
 import { mockKPIData, mockProductionData, mockMarketConcentration, mockImportCountries, mockMarketBalance, mockCompetitiveMetrics } from "@/lib/mockData";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { format } from "date-fns";
-import { cn } from "@/lib/utils";
-import { DateRange } from "react-day-picker";
 
 const COLORS = ["hsl(var(--chart-1))", "hsl(var(--chart-2))", "hsl(var(--chart-3))", "hsl(var(--chart-4))", "hsl(var(--chart-5))", "hsl(var(--muted))"];
 
+const MONTHS = [
+  { value: "01", label: "January" },
+  { value: "02", label: "February" },
+  { value: "03", label: "March" },
+  { value: "04", label: "April" },
+  { value: "05", label: "May" },
+  { value: "06", label: "June" },
+  { value: "07", label: "July" },
+  { value: "08", label: "August" },
+  { value: "09", label: "September" },
+  { value: "10", label: "October" },
+  { value: "11", label: "November" },
+  { value: "12", label: "December" },
+];
+
+const YEARS = Array.from({ length: 10 }, (_, i) => {
+  const year = new Date().getFullYear() - 5 + i;
+  return { value: year.toString(), label: year.toString() };
+});
+
 export default function Dashboard() {
-  const [date, setDate] = useState<DateRange | undefined>({
-    from: new Date(2025, 0, 1),
-    to: new Date(2025, 9, 23),
-  });
+  const [fromMonth, setFromMonth] = useState("01");
+  const [fromYear, setFromYear] = useState("2025");
+  const [toMonth, setToMonth] = useState("10");
+  const [toYear, setToYear] = useState("2025");
 
   return (
     <div className="space-y-6">
@@ -58,35 +74,60 @@ export default function Dashboard() {
             Competition metrics and market insights
           </p>
         </div>
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant="outline" className="gap-2 min-w-[260px] justify-start">
-              <CalendarIcon className="w-4 h-4" />
-              {date?.from ? (
-                date.to ? (
-                  <>
-                    {format(date.from, "LLL dd, y")} - {format(date.to, "LLL dd, y")}
-                  </>
-                ) : (
-                  format(date.from, "LLL dd, y")
-                )
-              ) : (
-                <span>Pick a date range</span>
-              )}
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="end">
-            <Calendar
-              initialFocus
-              mode="range"
-              defaultMonth={date?.from}
-              selected={date}
-              onSelect={setDate}
-              numberOfMonths={2}
-              className="pointer-events-auto"
-            />
-          </PopoverContent>
-        </Popover>
+        <div className="flex items-center gap-2">
+          <CalendarIcon className="w-4 h-4 text-muted-foreground" />
+          <div className="flex items-center gap-2">
+            <Select value={fromMonth} onValueChange={setFromMonth}>
+              <SelectTrigger className="w-[130px]">
+                <SelectValue placeholder="Month" />
+              </SelectTrigger>
+              <SelectContent>
+                {MONTHS.map((month) => (
+                  <SelectItem key={month.value} value={month.value}>
+                    {month.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={fromYear} onValueChange={setFromYear}>
+              <SelectTrigger className="w-[100px]">
+                <SelectValue placeholder="Year" />
+              </SelectTrigger>
+              <SelectContent>
+                {YEARS.map((year) => (
+                  <SelectItem key={year.value} value={year.value}>
+                    {year.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <span className="text-muted-foreground">-</span>
+            <Select value={toMonth} onValueChange={setToMonth}>
+              <SelectTrigger className="w-[130px]">
+                <SelectValue placeholder="Month" />
+              </SelectTrigger>
+              <SelectContent>
+                {MONTHS.map((month) => (
+                  <SelectItem key={month.value} value={month.value}>
+                    {month.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={toYear} onValueChange={setToYear}>
+              <SelectTrigger className="w-[100px]">
+                <SelectValue placeholder="Year" />
+              </SelectTrigger>
+              <SelectContent>
+                {YEARS.map((year) => (
+                  <SelectItem key={year.value} value={year.value}>
+                    {year.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
       </div>
 
       {/* KPI Cards */}
