@@ -23,20 +23,20 @@ import {
 } from "@/components/ui/sidebar";
 
 const menuItems = [
-  { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Local Manufacturers", url: "/manufacturers", icon: Factory },
-  { title: "Import Countries", url: "/import-countries", icon: Globe },
-  { title: "Export Countries", url: "/export-countries", icon: Send },
-  { title: "Imported Products", url: "/imported-products", icon: Package },
-  { title: "Exported Products", url: "/exported-products", icon: PackageOpen },
+  { title: "Boshqaruv paneli", url: "/", icon: LayoutDashboard },
+  { title: "Mahalliy ishlab chiqaruvchilar", url: "/manufacturers", icon: Factory },
+  { title: "Import davlatlari", url: "/import-countries", icon: Globe },
+  { title: "Eksport davlatlari", url: "/export-countries", icon: Send },
+  { title: "Import qilingan mahsulotlar", url: "/imported-products", icon: Package },
+  { title: "Eksport qilingan mahsulotlar", url: "/exported-products", icon: PackageOpen },
 ];
 
 const dataMenuItems = [
-  { title: "Import Data Upload", url: "/import-upload", icon: Upload },
-  { title: "Export Data Upload", url: "/export-upload", icon: FileUp },
+  { title: "Import ma'lumotlarni yuklash", url: "/import-upload", icon: Upload },
+  { title: "Eksport ma'lumotlarni yuklash", url: "/export-upload", icon: FileUp },
 ];
 
-const aiMenuItem = { title: "AI Assistant", url: "/ai-assistant", icon: MessageSquare };
+const aiMenuItem = { title: "AI Yordamchi", url: "/ai-assistant", icon: MessageSquare };
 
 export function AppSidebar() {
   return (
@@ -47,15 +47,15 @@ export function AppSidebar() {
             <LayoutDashboard className="w-5 h-5 text-sidebar-background" />
           </div>
           <div>
-            <h2 className="text-sm font-semibold text-sidebar-foreground">Market Analytics</h2>
-            <p className="text-xs text-sidebar-foreground/70">Competition Platform</p>
+            <h2 className="text-sm font-semibold text-sidebar-foreground">Bozor Tahlili</h2>
+            <p className="text-xs text-sidebar-foreground/70">Raqobat Platformasi</p>
           </div>
         </div>
       </SidebarHeader>
       
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-sidebar-foreground/70">Analytics</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-sidebar-foreground/70">Tahlillar</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
@@ -81,7 +81,7 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="text-sidebar-foreground/70">Data Management</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-sidebar-foreground/70">Ma'lumotlar Boshqaruvi</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {dataMenuItems.map((item) => (
@@ -106,7 +106,7 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="text-sidebar-foreground/70">AI Tools</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-sidebar-foreground/70">Sun'iy Intelekt Asboblari</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>

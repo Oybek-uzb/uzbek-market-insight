@@ -36,22 +36,23 @@ import {
 } from "recharts";
 import { mockKPIData, mockProductionData, mockMarketConcentration, mockImportCountries, mockMarketBalance, mockCompetitiveMetrics } from "@/lib/mockData";
 import { Button } from "@/components/ui/button";
+import { SelectUI } from "@/components/select-ui";
 
 const COLORS = ["hsl(var(--chart-1))", "hsl(var(--chart-2))", "hsl(var(--chart-3))", "hsl(var(--chart-4))", "hsl(var(--chart-5))", "hsl(var(--muted))"];
 
 const MONTHS = [
-  { value: "01", label: "January" },
-  { value: "02", label: "February" },
-  { value: "03", label: "March" },
-  { value: "04", label: "April" },
+  { value: "01", label: "Yanvar" },
+  { value: "02", label: "Fevral" },
+  { value: "03", label: "Mart" },
+  { value: "04", label: "Aprel" },
   { value: "05", label: "May" },
-  { value: "06", label: "June" },
-  { value: "07", label: "July" },
-  { value: "08", label: "August" },
-  { value: "09", label: "September" },
-  { value: "10", label: "October" },
-  { value: "11", label: "November" },
-  { value: "12", label: "December" },
+  { value: "06", label: "Iyun" },
+  { value: "07", label: "Iyul" },
+  { value: "08", label: "Avgust" },
+  { value: "09", label: "Sentabr" },
+  { value: "10", label: "Oktabr" },
+  { value: "11", label: "Noyabr" },
+  { value: "12", label: "Dekabr" },
 ];
 
 const YEARS = Array.from({ length: 10 }, (_, i) => {
@@ -69,94 +70,43 @@ export default function Dashboard() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Market Analytics Dashboard</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Bozor Tahlillari Boshqaruv Paneli</h1>
           <p className="text-muted-foreground mt-1">
-            Competition metrics and market insights
+            Raqobat ko'rsatkichlari va bozor tahlillari
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <CalendarIcon className="w-4 h-4 text-muted-foreground" />
-          <div className="flex items-center gap-2">
-            <Select value={fromMonth} onValueChange={setFromMonth}>
-              <SelectTrigger className="w-[130px]">
-                <SelectValue placeholder="Month" />
-              </SelectTrigger>
-              <SelectContent>
-                {MONTHS.map((month) => (
-                  <SelectItem key={month.value} value={month.value}>
-                    {month.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select value={fromYear} onValueChange={setFromYear}>
-              <SelectTrigger className="w-[100px]">
-                <SelectValue placeholder="Year" />
-              </SelectTrigger>
-              <SelectContent>
-                {YEARS.map((year) => (
-                  <SelectItem key={year.value} value={year.value}>
-                    {year.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <span className="text-muted-foreground">-</span>
-            <Select value={toMonth} onValueChange={setToMonth}>
-              <SelectTrigger className="w-[130px]">
-                <SelectValue placeholder="Month" />
-              </SelectTrigger>
-              <SelectContent>
-                {MONTHS.map((month) => (
-                  <SelectItem key={month.value} value={month.value}>
-                    {month.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select value={toYear} onValueChange={setToYear}>
-              <SelectTrigger className="w-[100px]">
-                <SelectValue placeholder="Year" />
-              </SelectTrigger>
-              <SelectContent>
-                {YEARS.map((year) => (
-                  <SelectItem key={year.value} value={year.value}>
-                    {year.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
+        
+        
+       <SelectUI/>
       </div>
 
       {/* KPI Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <KPICard
-          title="Local Producers"
+          title="Mahalliy Ishlab Chiqaruvchilar"
           value={mockKPIData.localProducers}
-          subtitle={`Volume: ${mockKPIData.productionVolume} units`}
+          subtitle={`Hajm: ${mockKPIData.productionVolume} dona`}
           icon={Factory}
           trend={{ value: 8.2, isPositive: true }}
         />
         <KPICard
-          title="Production Value"
+          title="Ishlab Chiqarish Qiymati"
           value={mockKPIData.productionValue}
-          subtitle="Total market value"
+          subtitle="Umumiy bozor qiymati"
           icon={DollarSign}
           trend={{ value: 12.5, isPositive: true }}
         />
         <KPICard
-          title="Export Companies"
+          title="Eksport Kompaniyalari"
           value={mockKPIData.exportCompanies}
-          subtitle={`Value: ${mockKPIData.exportValue}`}
+          subtitle={`Qiymat: ${mockKPIData.exportValue}`}
           icon={Send}
           trend={{ value: 5.3, isPositive: true }}
         />
         <KPICard
-          title="Import Companies"
+          title="Import Kompaniyalari"
           value={mockKPIData.importCompanies}
-          subtitle={`Value: ${mockKPIData.importValue}`}
+          subtitle={`Qiymat: ${mockKPIData.importValue}`}
           icon={Package}
           trend={{ value: 3.1, isPositive: false }}
         />
@@ -165,21 +115,21 @@ export default function Dashboard() {
       {/* Market Concentration Indicators */}
       <div className="grid gap-4 md:grid-cols-3">
         <KPICard
-          title="Market Saturation"
+          title="Bozor To'yinganligi"
           value={`${mockKPIData.marketSaturation}%`}
-          subtitle="Local products coverage"
+          subtitle="Mahsulotlarning qoplamasi"
           icon={TrendingUp}
         />
         <KPICard
-          title="HHI Index"
+          title="HHI Indeksi"
           value={mockKPIData.hhi}
-          subtitle="Herfindahl-Hirschman Index"
+          subtitle="Herfindahl-Hirschman Indeksi"
           icon={BarChart3}
         />
         <KPICard
-          title="CR-5 Ratio"
+          title="CR-5 Nisbati"
           value={`${(mockKPIData.cr5 * 100).toFixed(0)}%`}
-          subtitle="Top 5 Concentration"
+          subtitle="5 ta yirik ishtirokchilar ulushi"
           icon={PieChartIcon}
         />
       </div>
@@ -187,8 +137,8 @@ export default function Dashboard() {
       {/* Charts */}
       <div className="grid gap-4 md:grid-cols-2">
         <ChartCard 
-          title="Production, Import & Export Trends"
-          description="Monthly data comparison"
+          title="Ishlab Chiqarish, Import va Eksport Trendlari"
+          description="Oylik ma'lumotlarni solishtirish"
         >
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={mockProductionData}>

@@ -10,34 +10,38 @@ import {
 import { mockImportCountries } from "@/lib/mockData";
 import { ChartCard } from "@/components/ChartCard";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
+import { SelectUI } from "@/components/select-ui";
 
 const COLORS = ["hsl(var(--chart-1))", "hsl(var(--chart-2))", "hsl(var(--chart-3))", "hsl(var(--chart-4))", "hsl(var(--chart-5))"];
 
 export default function ImportCountries() {
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Import Countries</h1>
+      <div className="flex items-center justify-between">
+        <div>
+           <h1 className="text-3xl font-bold tracking-tight">Import Mamlakatlari</h1>
         <p className="text-muted-foreground mt-1">
-          Geographic distribution of import sources
+          Import manbalarining geografik taqsimoti
         </p>
+        </div>
+        <SelectUI />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Import Sources</CardTitle>
-            <CardDescription>Countries from which products are imported</CardDescription>
+            <CardTitle>Import Manbalari</CardTitle>
+            <CardDescription>Mahsulotlar import qilinadigan mamlakatlar</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="rounded-md border">
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Country</TableHead>
-                    <TableHead>Volume</TableHead>
-                    <TableHead>Value</TableHead>
-                    <TableHead className="text-right">Share %</TableHead>
+                    <TableHead>Mamlakat</TableHead>
+                    <TableHead>Hajmi</TableHead>
+                    <TableHead>Qiymati</TableHead>
+                    <TableHead className="text-right">Ulushi %</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -56,8 +60,8 @@ export default function ImportCountries() {
         </Card>
 
         <ChartCard 
-          title="Import Share by Country"
-          description="Percentage distribution of imports"
+          title="Import taqsimoti mamlakatlar bo'yicha"
+          description="Importning foiz taqsimoti"
         >
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -66,7 +70,25 @@ export default function ImportCountries() {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ country, share }) => `${country}: ${share.toFixed(1)}%`}
+                label={({ country, share, cx, cy, midAngle, innerRadius, outerRadius, index }) => {
+                  const RADIAN = Math.PI / 180;
+                  const radius = 20 + innerRadius + (outerRadius - innerRadius);
+                  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                  
+                  return (
+                    <text
+                      x={x}
+                      y={y}
+                      fill="hsl(var(--foreground))"
+                      textAnchor={x > cx ? 'start' : 'end'}
+                      dominantBaseline="central"
+                      style={{ fontSize: '12px'}}
+                    >
+                      {`${country}: ${share.toFixed(1)}%`}
+                    </text>
+                  );
+                }}
                 outerRadius={100}
                 fill="hsl(var(--chart-1))"
                 dataKey="share"

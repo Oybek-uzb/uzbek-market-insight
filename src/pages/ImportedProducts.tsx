@@ -20,15 +20,15 @@ export default function ImportedProducts() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Imported Products</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Import Qilingan Mahsulotlar</h1>
         <p className="text-muted-foreground mt-1">
-          Detailed view of imported goods and commodities
+          Import qilingan tovarlar va tovarlarning batafsil ko'rinishi
         </p>
       </div>
 
       <ChartCard 
-        title="Top 10 Imported Products by Value"
-        description="Product categories with highest import values"
+        title="Qiymati bo'yicha eng yirik 10 ta import mahsuloti"
+        description="Eng yuqori import qiymatiga ega mahsulot turlari"
       >
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={chartData} layout="vertical">
@@ -42,25 +42,25 @@ export default function ImportedProducts() {
                 borderRadius: "var(--radius)"
               }} 
             />
-            <Bar dataKey="value" fill="hsl(var(--chart-3))" radius={[0, 8, 8, 0]} name="Value ($M)" />
+            <Bar dataKey="value" fill="hsl(var(--chart-3))" radius={[0, 8, 8, 0]} name="Qiymati ($Mln)" />
           </BarChart>
         </ResponsiveContainer>
       </ChartCard>
 
       <Card>
         <CardHeader>
-          <CardTitle>Imported Products Database</CardTitle>
-          <CardDescription>Complete list of imported products with HS codes</CardDescription>
+          <CardTitle>Import Qilingan Mahsulotlar Bazasi</CardTitle>
+          <CardDescription>HS kodlari bilan import qilingan mahsulotlarning to'liq ro'yxati</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="rounded-md border">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Product Name</TableHead>
-                  <TableHead>HS Code</TableHead>
-                  <TableHead>Import Volume</TableHead>
-                  <TableHead className="text-right">Import Value</TableHead>
+                  <TableHead>Mahsulot Nomi</TableHead>
+                  <TableHead>HS Kodi</TableHead>
+                  <TableHead>Import Hacmi</TableHead>
+                  <TableHead className="text-right">Import Qiymati</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

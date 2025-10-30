@@ -20,15 +20,15 @@ export default function ExportedProducts() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Exported Products</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Eksport Qilingan Mahsulotlar</h1>
         <p className="text-muted-foreground mt-1">
-          Detailed view of exported goods and commodities
+          Eksport qilingan tovarlar va tovarlarning batafsil ko'rinishi
         </p>
       </div>
 
       <ChartCard 
-        title="Top 10 Exported Products by Value"
-        description="Product categories with highest export values"
+        title="Qiymati bo'yicha eng yirik 10 ta eksport mahsuloti"
+        description="Eng yuqori eksport qiymatiga ega mahsulot turlari"
       >
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={chartData} layout="vertical">
@@ -42,25 +42,25 @@ export default function ExportedProducts() {
                 borderRadius: "var(--radius)"
               }} 
             />
-            <Bar dataKey="value" fill="hsl(var(--chart-4))" radius={[0, 8, 8, 0]} name="Value ($M)" />
+            <Bar dataKey="value" fill="hsl(var(--chart-4))" radius={[0, 8, 8, 0]} name="Qiymati ($Mln)" />
           </BarChart>
         </ResponsiveContainer>
       </ChartCard>
 
       <Card>
         <CardHeader>
-          <CardTitle>Exported Products Database</CardTitle>
-          <CardDescription>Complete list of exported products with HS codes</CardDescription>
+          <CardTitle>Eksport Qilingan Mahsulotlar Bazasi</CardTitle>
+          <CardDescription>HS kodlari bilan eksport qilingan mahsulotlarning to'liq ro'yxati</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="rounded-md border">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Product Name</TableHead>
-                  <TableHead>HS Code</TableHead>
-                  <TableHead>Export Volume</TableHead>
-                  <TableHead className="text-right">Export Value</TableHead>
+                  <TableHead>Mahsulot Nomi</TableHead>
+                  <TableHead>HS Kodi</TableHead>
+                  <TableHead>Eksport Hacmi</TableHead>
+                  <TableHead className="text-right">Eksport Qiymati</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

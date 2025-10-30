@@ -10,32 +10,35 @@ import {
 import { mockExportCountries } from "@/lib/mockData";
 import { ChartCard } from "@/components/ChartCard";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-
+import { SelectUI } from "@/components/select-ui";
 export default function ExportCountries() {
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Export Countries</h1>
+      <div className="flex items-center justify-between">
+        <div>
+           <h1 className="text-3xl font-bold tracking-tight">Eksport Mamlakatlari</h1>
         <p className="text-muted-foreground mt-1">
-          Geographic distribution of export destinations
+          Eksport manzillarining geografik taqsimoti
         </p>
+        </div>
+        <SelectUI />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Export Destinations</CardTitle>
-            <CardDescription>Countries to which products are exported</CardDescription>
+            <CardTitle>Eksport Manzillari</CardTitle>
+            <CardDescription>Mahsulotlar eksport qilinadigan mamlakatlar</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="rounded-md border">
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Country</TableHead>
-                    <TableHead>Volume</TableHead>
-                    <TableHead>Value</TableHead>
-                    <TableHead className="text-right">Share %</TableHead>
+                    <TableHead>Mamlakat</TableHead>
+                    <TableHead>Hajmi</TableHead>
+                    <TableHead>Qiymati</TableHead>
+                    <TableHead className="text-right">Ulushi %</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -54,8 +57,8 @@ export default function ExportCountries() {
         </Card>
 
         <ChartCard 
-          title="Export Share by Country"
-          description="Distribution of export destinations"
+          title="Mamlakatlar bo'yicha eksport ulushi"
+          description="Eksport manzillarining taqsimoti"
         >
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={mockExportCountries}>
@@ -69,7 +72,7 @@ export default function ExportCountries() {
                   borderRadius: "var(--radius)"
                 }} 
               />
-              <Bar dataKey="share" fill="hsl(var(--chart-2))" radius={[8, 8, 0, 0]} name="Export Share %" />
+              <Bar dataKey="share" fill="hsl(var(--chart-2))" radius={[8, 8, 0, 0]} name="Eksport ulushi %" />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>

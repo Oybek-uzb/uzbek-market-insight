@@ -15,9 +15,9 @@ export default function ExportUpload() {
   const [isUploaded, setIsUploaded] = useState(false);
   
   const mockPreviewData = [
-    { product: "Cotton Textiles", exporter: "Tashkent Textiles", country: "Afghanistan", quantity: "1,850", value: "$5.2M", date: "2025-10-15" },
-    { product: "Fresh Fruits", exporter: "Fergana Export Co", country: "Russia", quantity: "3,200", value: "$4.8M", date: "2025-10-14" },
-    { product: "Chemical Fertilizers", exporter: "Namangan Chemicals", country: "Tajikistan", quantity: "1,450", value: "$2.8M", date: "2025-10-13" },
+    { product: "Paxta To'qimachilik", exporter: "Toshkent To'qimachilik", country: "Afg'oniston", quantity: "1,850", value: "$5.2M", date: "2025-10-15" },
+    { product: "Yangi Mevalar", exporter: "Farg'ona Eksport Kompaniyasi", country: "Rossiya", quantity: "3,200", value: "$4.8M", date: "2025-10-14" },
+    { product: "Kimyoviy O'g'itlar", exporter: "Namangan Kimyo", country: "Tojikiston", quantity: "1,450", value: "$2.8M", date: "2025-10-13" },
   ];
 
   const handleFileUpload = () => {
@@ -27,17 +27,17 @@ export default function ExportUpload() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Export Data Upload</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Eksport Ma'lumotlarini Yuklash</h1>
         <p className="text-muted-foreground mt-1">
-          Upload and manage export statistics from Excel files
+          Excel fayllaridan eksport statistikasini yuklang va boshqaring
         </p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Upload Export Data</CardTitle>
+          <CardTitle>Eksport Ma'lumotlarini Yuklash</CardTitle>
           <CardDescription>
-            Upload Excel files (.xlsx, .xls) containing export statistics
+            Eksport statistikasini o'z ichiga olgan Excel fayllarini yuklang (.xlsx, .xls)
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -48,17 +48,17 @@ export default function ExportUpload() {
                   <FileSpreadsheet className="w-8 h-8 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Drop your Excel file here</h3>
+                  <h3 className="text-lg font-semibold mb-2">Excel faylingizni shu yerga tashlang</h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    or click to browse from your computer
+                    yoki kompyuteringizdan fayl tanlash uchun bosing
                   </p>
                   <Button onClick={handleFileUpload} className="gap-2">
                     <Upload className="w-4 h-4" />
-                    Select File
+                    Fayl Tanlash
                   </Button>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Supported formats: .xlsx, .xls (Max size: 10MB)
+                  Qo'llab-quvvatlanadigan formatlar: .xlsx, .xls (Maksimal hajm: 10MB)
                 </p>
               </div>
             </div>
@@ -67,26 +67,26 @@ export default function ExportUpload() {
               <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
                 <CheckCircle2 className="w-5 h-5 text-green-600" />
                 <div className="flex-1">
-                  <p className="font-medium text-green-900">File uploaded successfully</p>
-                  <p className="text-sm text-green-700">export_data_oct_2025.xlsx • 3 records parsed</p>
+                  <p className="font-medium text-green-900">Fayl muvaffaqiyatli yuklandi</p>
+                  <p className="text-sm text-green-700">eksport_ma'lumotlari_okt_2025.xlsx • 3 ta yozuv tahlil qilindi</p>
                 </div>
                 <Button variant="outline" size="sm" onClick={() => setIsUploaded(false)}>
-                  Upload New
+                  Yangisini Yuklash
                 </Button>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold mb-4">Data Preview</h3>
+                <h3 className="text-lg font-semibold mb-4">Ma'lumotlarni Ko'rish</h3>
                 <div className="rounded-md border">
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Product</TableHead>
-                        <TableHead>Exporter</TableHead>
-                        <TableHead>Country</TableHead>
-                        <TableHead>Quantity</TableHead>
-                        <TableHead>Value</TableHead>
-                        <TableHead>Date</TableHead>
+                        <TableHead>Mahsulot</TableHead>
+                        <TableHead>Eksportchi</TableHead>
+                        <TableHead>Mamlakat</TableHead>
+                        <TableHead>Soni</TableHead>
+                        <TableHead>Qiymati</TableHead>
+                        <TableHead>Sana</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -106,8 +106,8 @@ export default function ExportUpload() {
               </div>
 
               <div className="flex gap-3">
-                <Button className="flex-1">Process & Save Data</Button>
-                <Button variant="outline">Download Template</Button>
+                <Button className="flex-1">Ma'lumotlarni Qayta Ishlash va Saqlash</Button>
+                <Button variant="outline">Shablonni Yuklab Olish</Button>
               </div>
             </>
           )}
