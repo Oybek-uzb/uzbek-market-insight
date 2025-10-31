@@ -20,7 +20,7 @@ export function TopBar() {
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input 
-            placeholder="Search products, companies, countries..." 
+            placeholder="Mahsulotlar, kompaniyalar, mamlakatlar bo'yicha qidirish..." 
             className="pl-9"
           />
         </div>
@@ -42,12 +42,12 @@ export function TopBar() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel>Mening hisobim</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>Profil</DropdownMenuItem>
+            <DropdownMenuItem>Sozlamalar</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Log out</DropdownMenuItem>
+            <DropdownMenuItem>Chiqish</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

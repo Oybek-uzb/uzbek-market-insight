@@ -29,7 +29,7 @@ export function KPICard({ title, value, subtitle, icon: Icon, trend }: KPICardPr
         )}
         {trend && (
           <div className={`text-xs mt-2 ${trend.isPositive ? 'text-green-600' : 'text-red-600'}`}>
-            {trend.isPositive ? '↑' : '↓'} {Math.abs(trend.value)}% from last period
+            {trend.isPositive ? '↑' : '↓'} {Math.abs(trend.value)}% o'tgan davrga nisbatan
           </div>
         )}
       </CardContent>

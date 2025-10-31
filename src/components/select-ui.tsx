@@ -22,21 +22,34 @@ const YEARS = Array.from({ length: 10 }, (_, i) => {
   return { value: year.toString(), label: year.toString() };
 });
 
-export const SelectUI = () => {
+interface SelectUIProps {
+  onCategoryChange?: (category: string) => void;
+}
+
+export const SelectUI = ({ onCategoryChange }: SelectUIProps) => {
   const [fromMonth, setFromMonth] = useState("01");
   const [fromYear, setFromYear] = useState("2025");
   const [toMonth, setToMonth] = useState("10");
   const [toYear, setToYear] = useState("2025");
+  const [selectedCategory, setSelectedCategory] = useState("bloknot");
+
+  const handleCategoryChange = (value: string) => {
+    setSelectedCategory(value);
+    if (onCategoryChange) {
+      onCategoryChange(value);
+    }
+  };
 
   return (
     <div className="p-4">
       <div className="flex items-center gap-4">
-        <Select>
+        <Select value={selectedCategory} onValueChange={handleCategoryChange}>
           <SelectTrigger className="w-[180px] bg-white">
             <SelectValue placeholder="Kategoriya" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="food">bloknot</SelectItem>
+            <SelectItem value="bloknot">Bloknot</SelectItem>
+            <SelectItem value="soch">Soch uchun vositalar</SelectItem>
           </SelectContent>
         </Select>
 

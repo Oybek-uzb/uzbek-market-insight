@@ -11,27 +11,51 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { mockManufacturers } from "@/lib/mockData";
+import { mockManufacturers, notebookManufacturers, hairCareManufacturers } from "@/lib/mockData";
 import { SelectUI } from "@/components/select-ui";
 
 export default function Manufacturers() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [category, setCategory] = useState("bloknot");
 
-  const filteredData = mockManufacturers.filter(item =>
+  // Handle category change
+  const handleCategoryChange = (selectedCategory: string) => {
+    setCategory(selectedCategory);
+  };
+
+  // Get manufacturers based on selected category
+  const getManufacturers = () => {
+    return category === 'soch' ? hairCareManufacturers : notebookManufacturers;
+  };
+
+  // Filter data based on search term and selected category
+  const filteredData = getManufacturers().filter(item =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Get category title
+  const getCategoryTitle = () => {
+    return category === 'soch' ? 'Soch uchun vositalar ishlab chiqaruvchilari' : 'Bloknot ishlab chiqaruvchilari';
+  };
+
+  // Get category description
+  const getCategoryDescription = () => {
+    return category === 'soch' 
+      ? 'Soch parvarishi uchun mahsulotlar ishlab chiqaruvchi korxonalar ro\'yxati' 
+      : 'Yozuv va yorliq ishlab chiqaruvchi korxonalar ro\'yxati';
+  };
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Mahalliy Ishlab Chiqaruvchilar</h1>
-        <p className="text-muted-foreground mt-1">
-          Ro'yxatdan o'tgan ishlab chiqaruvchilar va ishlab chiqarish ma'lumotlari
-        </p>
+          <h1 className="text-3xl font-bold tracking-tight">{getCategoryTitle()}</h1>
+          <p className="text-muted-foreground mt-1">
+            {getCategoryDescription()}
+          </p>
         </div>
-        <SelectUI/>
+        <SelectUI onCategoryChange={handleCategoryChange} />
       </div>
 
 
@@ -41,7 +65,7 @@ export default function Manufacturers() {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle>Ishlab Chiqaruvchilar Bazasi</CardTitle>
-              <CardDescription>Mahalliy ishlab chiqarish kompaniyalarini qidirish va filtrlash</CardDescription>
+              <CardDescription>{getCategoryTitle()} - qidirish va filtrlash</CardDescription>
             </div>
             <Button variant="outline" className="gap-2">
               <Filter className="w-4 h-4" />

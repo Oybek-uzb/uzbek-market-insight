@@ -7,31 +7,64 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { mockImportCountries } from "@/lib/mockData";
+import { notebookImportCountries, hairCareImportCountries } from "@/lib/mockData";
 import { ChartCard } from "@/components/ChartCard";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 import { SelectUI } from "@/components/select-ui";
+import { useState } from "react";
 
-const COLORS = ["hsl(var(--chart-1))", "hsl(var(--chart-2))", "hsl(var(--chart-3))", "hsl(var(--chart-4))", "hsl(var(--chart-5))"];
+const COLORS = ["hsl(var(--chart-1))", "hsl(var(--chart-2))", "hsl(var(--chart-3))", "hsl(var(--chart-4))", "hsl(var(--chart-5))", "hsl(var(--muted))"];
 
 export default function ImportCountries() {
+  const [category, setCategory] = useState("bloknot");
+  
+  // Handle category change
+  const handleCategoryChange = (selectedCategory: string) => {
+    setCategory(selectedCategory);
+  };
+
+  // Get import countries based on selected category
+  const getImportCountries = () => {
+    return category === 'soch' ? hairCareImportCountries : notebookImportCountries;
+  };
+
+  // Get category title
+  const getCategoryTitle = () => {
+    return category === 'soch' 
+      ? 'Soch uchun vositalar import mamlakatlari' 
+      : 'Bloknot import mamlakatlari';
+  };
+
+  // Get category description
+  const getCategoryDescription = () => {
+    return category === 'soch'
+      ? 'Soch parvarishi uchun mahsulotlar import qilinadigan asosiy mamlakatlar'
+      : 'Yozuv va yorliq mahsulotlari import qilinadigan asosiy mamlakatlar';
+  };
+
+  // Log the current category and data for debugging
+  console.log('Current category:', category);
+  console.log('Import countries:', getImportCountries());
+
+  const importCountries = getImportCountries();
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-           <h1 className="text-3xl font-bold tracking-tight">Import Mamlakatlari</h1>
-        <p className="text-muted-foreground mt-1">
-          Import manbalarining geografik taqsimoti
-        </p>
+          <h1 className="text-3xl font-bold tracking-tight">{getCategoryTitle()}</h1>
+          <p className="text-muted-foreground mt-1">
+            {getCategoryDescription()}
+          </p>
         </div>
-        <SelectUI />
+        <SelectUI onCategoryChange={handleCategoryChange} />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle>Import Manbalari</CardTitle>
-            <CardDescription>Mahsulotlar import qilinadigan mamlakatlar</CardDescription>
+            <CardDescription>{getCategoryDescription()}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="rounded-md border">
@@ -45,7 +78,7 @@ export default function ImportCountries() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {mockImportCountries.map((item, index) => (
+                  {importCountries.map((item, index) => (
                     <TableRow key={index}>
                       <TableCell className="font-medium">{item.country}</TableCell>
                       <TableCell>{item.volume}</TableCell>
@@ -66,7 +99,7 @@ export default function ImportCountries() {
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
-                data={mockImportCountries}
+                data={importCountries}
                 cx="50%"
                 cy="50%"
                 labelLine={false}
@@ -93,7 +126,7 @@ export default function ImportCountries() {
                 fill="hsl(var(--chart-1))"
                 dataKey="share"
               >
-                {mockImportCountries.map((entry, index) => (
+                {importCountries.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
