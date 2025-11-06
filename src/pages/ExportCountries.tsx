@@ -8,7 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useState, useEffect } from "react";
-import { notebookExportCountries, hairCareExportCountries } from "@/lib/mockData";
+import { notebookExportCountries, hairCareExportCountries, hairCareImportCountries, fosforImportCountries, tormozImportCountries, poliamidImportCountries, qalamImportCountries, pishloqImportCountries, notebookImportCountries } from "@/lib/mockData";
 import { ChartCard } from "@/components/ChartCard";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { SelectUI } from "@/components/select-ui";
@@ -23,21 +23,62 @@ export default function ExportCountries() {
 
   // Get export countries based on selected category
   const getExportCountries = () => {
-    return category === 'soch' ? hairCareExportCountries : notebookExportCountries;
+    switch (category) {
+         case 'soch':
+           return hairCareImportCountries;
+         case 'fosfor':
+           return fosforImportCountries;
+         case 'tormoz':
+           return tormozImportCountries;
+         case 'poliamid':
+           return poliamidImportCountries;
+         case 'qalam':
+           return qalamImportCountries;
+         case 'pishloq':
+           return pishloqImportCountries;
+         default:
+           return notebookImportCountries;
+       }
   };
 
   // Get category title
   const getCategoryTitle = () => {
-    return category === 'soch' 
-      ? 'Soch uchun vositalar eksport mamlakatlari' 
-      : 'Bloknot eksport mamlakatlari';
+    switch (category) {
+      case 'soch':
+        return 'Soch uchun vositalar import mamlakatlari';
+      case 'fosfor':
+        return 'Fosfor kislotasi import mamlakatlari';
+      case 'tormoz':
+        return 'Tormoz kolodkalari qoplagichi import mamlakatlari';
+      case 'poliamid':
+        return 'Poliamid import mamlakatlari';
+      case 'qalam':
+        return 'Qalam sterjeni import mamlakatlari';
+      case 'pishloq':
+        return 'Pishloq va tvorog import mamlakatlari';
+      default:
+        return 'Bloknot import mamlakatlari';
+    }
   };
 
   // Get category description
   const getCategoryDescription = () => {
-    return category === 'soch'
-      ? 'Soch parvarishi uchun mahsulotlar eksport qilinadigan asosiy mamlakatlar'
-      : 'Yozuv va yorliq mahsulotlari eksport qilinadigan asosiy mamlakatlar';
+ switch (category) {
+      case 'soch':
+        return 'Soch parvarishi uchun mahsulotlar import qilinadigan asosiy mamlakatlar';
+      case 'fosfor':
+        return 'Fosfor kislotasi import qilinadigan asosiy mamlakatlar';
+      case 'tormoz':
+        return 'Tormoz kolodkalari qoplagichi import qilinadigan asosiy mamlakatlar';
+      case 'poliamid':
+        return 'Poliamid import qilinadigan asosiy mamlakatlar';
+      case 'qalam':
+        return 'Qalam sterjeni import qilinadigan asosiy mamlakatlar';
+      case 'pishloq':
+        return 'Pishloq va tvorog import qilinadigan asosiy mamlakatlar';
+      default:
+        return 'Yozuv va yorliq mahsulotlari import qilinadigan asosiy mamlakatlar';
+    }
   };
 
   const exportCountries = getExportCountries();

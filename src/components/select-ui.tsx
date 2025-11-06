@@ -50,6 +50,11 @@ export const SelectUI = ({ onCategoryChange }: SelectUIProps) => {
           <SelectContent>
             <SelectItem value="bloknot">Bloknot</SelectItem>
             <SelectItem value="soch">Soch uchun vositalar</SelectItem>
+            <SelectItem value="fosfor">Fosfor kislotasi</SelectItem>
+            <SelectItem value="tormoz">Tormoz Kolodkalari Qoplagichi</SelectItem>
+            <SelectItem value="poliamid">Poliamid</SelectItem>
+            <SelectItem value="qalam">Qalam Sterjeni</SelectItem>
+            <SelectItem value="pishloq">Pishloq va Tvorog</SelectItem>
           </SelectContent>
         </Select>
 

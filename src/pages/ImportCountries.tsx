@@ -7,17 +7,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { notebookImportCountries, hairCareImportCountries } from "@/lib/mockData";
+
 import { ChartCard } from "@/components/ChartCard";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 import { SelectUI } from "@/components/select-ui";
 import { useState } from "react";
+import { fosforImportCountries, hairCareImportCountries, notebookImportCountries, pishloqImportCountries, poliamidImportCountries, qalamImportCountries, tormozImportCountries } from "@/lib/mockData";
 
 const COLORS = ["hsl(var(--chart-1))", "hsl(var(--chart-2))", "hsl(var(--chart-3))", "hsl(var(--chart-4))", "hsl(var(--chart-5))", "hsl(var(--muted))"];
 
 export default function ImportCountries() {
   const [category, setCategory] = useState("bloknot");
-  
+
   // Handle category change
   const handleCategoryChange = (selectedCategory: string) => {
     setCategory(selectedCategory);
@@ -25,21 +26,62 @@ export default function ImportCountries() {
 
   // Get import countries based on selected category
   const getImportCountries = () => {
-    return category === 'soch' ? hairCareImportCountries : notebookImportCountries;
+    switch (category) {
+      case 'soch':
+        return hairCareImportCountries;
+      case 'fosfor':
+        return fosforImportCountries;
+      case 'tormoz':
+        return tormozImportCountries;
+      case 'poliamid':
+        return poliamidImportCountries;
+      case 'qalam':
+        return qalamImportCountries;
+      case 'pishloq':
+        return pishloqImportCountries;
+      default:
+        return notebookImportCountries;
+    }
   };
 
   // Get category title
   const getCategoryTitle = () => {
-    return category === 'soch' 
-      ? 'Soch uchun vositalar import mamlakatlari' 
-      : 'Bloknot import mamlakatlari';
+    switch (category) {
+      case 'soch':
+        return 'Soch uchun vositalar import mamlakatlari';
+      case 'fosfor':
+        return 'Fosfor kislotasi import mamlakatlari';
+      case 'tormoz':
+        return 'Tormoz kolodkalari qoplagichi import mamlakatlari';
+      case 'poliamid':
+        return 'Poliamid import mamlakatlari';
+      case 'qalam':
+        return 'Qalam sterjeni import mamlakatlari';
+      case 'pishloq':
+        return 'Pishloq va tvorog import mamlakatlari';
+      default:
+        return 'Bloknot import mamlakatlari';
+    }
   };
 
   // Get category description
   const getCategoryDescription = () => {
-    return category === 'soch'
-      ? 'Soch parvarishi uchun mahsulotlar import qilinadigan asosiy mamlakatlar'
-      : 'Yozuv va yorliq mahsulotlari import qilinadigan asosiy mamlakatlar';
+    switch (category) {
+      case 'soch':
+        return 'Soch parvarishi uchun mahsulotlar import qilinadigan asosiy mamlakatlar';
+      case 'fosfor':
+        return 'Fosfor kislotasi import qilinadigan asosiy mamlakatlar';
+      case 'tormoz':
+        return 'Tormoz kolodkalari qoplagichi import qilinadigan asosiy mamlakatlar';
+      case 'poliamid':
+        return 'Poliamid import qilinadigan asosiy mamlakatlar';
+      case 'qalam':
+        return 'Qalam sterjeni import qilinadigan asosiy mamlakatlar';
+      case 'pishloq':
+        return 'Pishloq va tvorog import qilinadigan asosiy mamlakatlar';
+      default:
+        return 'Yozuv va yorliq mahsulotlari import qilinadigan asosiy mamlakatlar';
+    }
   };
 
   // Log the current category and data for debugging
@@ -92,7 +134,7 @@ export default function ImportCountries() {
           </CardContent>
         </Card>
 
-        <ChartCard 
+        <ChartCard
           title="Import taqsimoti mamlakatlar bo'yicha"
           description="Importning foiz taqsimoti"
         >
@@ -103,12 +145,12 @@ export default function ImportCountries() {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ country, share, cx, cy, midAngle, innerRadius, outerRadius, index }) => {
+                label={({ country, share, cx, cy, midAngle, innerRadius, outerRadius }) => {
                   const RADIAN = Math.PI / 180;
                   const radius = 20 + innerRadius + (outerRadius - innerRadius);
                   const x = cx + radius * Math.cos(-midAngle * RADIAN);
                   const y = cy + radius * Math.sin(-midAngle * RADIAN);
-                  
+
                   return (
                     <text
                       x={x}
@@ -116,7 +158,7 @@ export default function ImportCountries() {
                       fill="hsl(var(--foreground))"
                       textAnchor={x > cx ? 'start' : 'end'}
                       dominantBaseline="central"
-                      style={{ fontSize: '12px'}}
+                      style={{ fontSize: '12px' }}
                     >
                       {`${country}: ${share.toFixed(1)}%`}
                     </text>
@@ -130,12 +172,12 @@ export default function ImportCountries() {
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip 
-                contentStyle={{ 
-                  backgroundColor: "hsl(var(--card))", 
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "hsl(var(--card))",
                   border: "1px solid hsl(var(--border))",
                   borderRadius: "var(--radius)"
-                }} 
+                }}
               />
             </PieChart>
           </ResponsiveContainer>

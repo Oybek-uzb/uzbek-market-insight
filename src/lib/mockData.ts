@@ -1,39 +1,126 @@
-// Notebooks category data
 export const notebookKPIData = {
   localProducers: 20,
-  productionVolume: "482T",
+  productionVolume: "482",
   productionValue: "$18,3M",
   exportCompanies: 11,
   exportVolume: "0",
   exportValue: "$4k",
   importCompanies: 288,
-  importVolume: "1450",
+  importVolume: "1 450",
   importValue: "$1,8M",
   marketSaturation: 25,
   hhi: 2301,
-  cr5: 0.68,
+  cr5: 68,
+  code: "4820103000",
+  name: "Bloknot"
 };
 
-// Hair care products category data
 export const hairCareKPIData = {
   localProducers: 7,
-  productionVolume: "2474",
+  productionVolume: "2 474",
   productionValue: "72 484 683 so'm",
   exportCompanies: 64,
-  exportVolume: "1561",
-  exportValue: "$3337,5 ",
+  exportVolume: "1 561",
+  exportValue: "$3 337,5 ",
   importCompanies: 397,
-  importVolume: "4958",
-  importValue: "$22804",
+  importVolume: "4 958",
+  importValue: "$22 804",
   marketSaturation: 42.1,
   hhi: 8158,
-  cr5: 0.58,
+  cr5: 35.78,
+  code: "3305",
+  name: "Soch uchun vositalar"
 };
 
-// Default to notebooks
+export const fosforKPIData = {
+  localProducers: 1,
+  productionVolume: "5",
+  productionValue: "453 465 so'm",
+  exportCompanies: 0,
+  exportVolume: "0",
+  exportValue: "0",
+  importCompanies: 26,
+  importVolume: "126",
+  importValue: "$562",
+  marketSaturation: 3.8,
+  hhi: 10000,
+  cr5: 88.42,
+  code: "2919900000",
+  name: "Fosfor kislotasi"
+};
+
+export const tormozKPIData = {
+  localProducers: 2,
+  productionVolume: "46",
+  productionValue: "2 900 918 so'm",
+  exportCompanies: 3,
+  exportVolume: "1",
+  exportValue: "$2,8",
+  importCompanies: 98,
+  importVolume: "538",
+  importValue: "$1 251",
+  marketSaturation: 7.9,
+  hhi: 9578,
+  cr5: 49.23,
+  code: "6813810000",
+  name: "Tormoz kolodkalari qoplagichi"
+};
+
+export const poliamidKPIData = {
+  localProducers: 1,
+  productionVolume: "1 294",
+  productionValue: "26 108 908 so'm",
+  exportCompanies: 8,
+  exportVolume: "637",
+  exportValue: "$1 919,0",
+  importCompanies: 54,
+  importVolume: "2 565",
+  importValue: "$7 867",
+  marketSaturation: 40.2,
+  hhi: 10000,
+  cr5: 63.65,
+  code: "3908100000",
+  name: "Poliamid"
+};
+
+export const qalamKPIData = {
+  localProducers: 2,
+  productionVolume: "1",
+  productionValue: "113 150 so'm",
+  exportCompanies: 0,
+  exportVolume: "0",
+  exportValue: "0",
+  importCompanies: 91,
+  importVolume: "179",
+  importValue: "$931",
+  marketSaturation: 0.6,
+  hhi: 5013,
+  cr5: 82.36,
+  code: "9609101000",
+  name: "Qalam"
+};
+
+export const pishloqKPIData = {
+  localProducers: 134,
+  productionVolume: "23 041",
+  productionValue: "366 645 198 so'm",
+  exportCompanies: 5,
+  exportVolume: "0",
+  exportValue: "$3",
+  importCompanies: 88,
+  importVolume: "4 020",
+  importValue: "$14 012",
+  marketSaturation: 85.1,
+  hhi: 2274,
+  cr5: 58.81,
+  code: "40610",
+  name: "Pishloq"
+};
+
 export const mockKPIData = notebookKPIData;
 
-// Notebook manufacturers
+//////////////////////////////////////////////////////////////
+
 export const notebookManufacturers = [
   { id: 1, name: "FAROVON PRINT-2020 xususiy korxonasi", inn: "307832960", address: "Navoiy viloyati, Navoiy sh. Navoiy ko'chasi, 53-uy", category: "Қоғоз ёки картондан рўйхатга олиш журнали, бухгалтерия китоблари ва бланка, ордер ва квитанция китобчалари, ён дафтарчалар, кундалик ёзувлар дафтари ва шу каби буюмлар", volume: "1" },
   { id: 2, name: "GRAND POLIGRAF BIZNES mas'uliyati cheklangan jamiyati", inn: "207122289", address: "Toshkent shahri, Chilonzor tumani Olmazor daxasi, 14-uy, 37-xona", category: "Қоғоз ёки картондан рўйхатга олиш журнали, бухгалтерия китоблари ва бланка, ордер ва квитанция китобчалари, ён дафтарчалар, кундалик ёзувлар дафтари ва шу каби буюмлар", volume: "184" },
@@ -42,7 +129,6 @@ export const notebookManufacturers = [
   { id: 5, name: "ZARHAL PRINT DIZAYN mas'uliyati cheklangan jamiyat", inn: "300767270", address: "Namangan viloyati, Namangan sh. Marg`ilon MFY, Marg`ilon ko`chasi, 8-uy", category: "Қоғоз ёки картондан рўйхатга олиш журнали, бухгалтерия китоблари ва бланка, ордер ва квитанция китобчалари, ён дафтарчалар, кундалик ёзувлар дафтари ва шу каби буюмлар", volume: "77" },
 ];
 
-// Hair care manufacturers
 export const hairCareManufacturers = [
   { id: 6, name: "ECLAIR COSMETIC mas'uliyati cheklangan jamiyati", inn: "23213744", address: "Toshkent shahri, Chilonzor tumani G`arbiy sanoat zonasi, Bunyod ko`chasi, 1B-uy", category: "Бошқа гуруҳларга киритилмаган лосьонлар ва соч учун бошқа воситалар (шампунлар, лаклар, сочларни жингалак қилиш ёки саранжомлаш учун воситалардан ташқари)", volume: "2 229" },
   { id: 7, name: "INCOSMETIC  ASIA mas'uliyati cheklangan jamiyati", inn: "28315053", address: "Toshkent shahri, Sirg'ali tumani Sog`diyona ko`chasi, 18-uy", category: "Бошқа гуруҳларга киритилмаган лосьонлар ва соч учун бошқа воситалар (шампунлар, лаклар, сочларни жингалак қилиш ёки саранжомлаш учун воситалардан ташқари)", volume: "114" },
@@ -51,8 +137,35 @@ export const hairCareManufacturers = [
   { id: 10, name: "DAISY PRODUCT mas'uliyati cheklangan jamiyati", inn: "23739535", address: "Toshkent shahri, Mirobod tumani Farg'ona yo'li 2-muyulish ko'chasi, 119/17, 121/16-uylar oraligida ", category: "Бошқа гуруҳларга киритилмаган лосьонлар ва соч учун бошқа воситалар (шампунлар, лаклар, сочларни жингалак қилиш ёки саранжомлаш учун воситалардан ташқари)", volume: "7" },
 ];
 
-// Default to notebook manufacturers
+export const fosforManufacturers = [
+  { id: 11, name: "EAST COLOR mas`uliyati cheklangan jamiyati", inn: "19097580", address: "Toshkent shahri, Yangihayot tumani CHOSHTEPA MFY, JANUBIY SANOAT XUDUDI", category: "Fosfor kislotasi ishlab chiqarish", volume: "5" },
+];
+
+export const tormozManufacturers = [
+  { id: 12, name: "AUTO PAD SYSTEMS mas'uliyati cheklangan jamiyati", inn: "25207653", address: "Jizzax viloyati, Jizzax sh. A - sanoat hududi", category: "Tormoz kolodkalari qoplag'ichlari ishlab chiqarish", volume: "45" },
+  { id: 13, name: "ANDIJON ENERGO TA`MIRLASH mas'uliyati cheklangan jamiyati", inn: "25146118", address: "Andijon viloyati, Andijon sh. Soy ko'chasi, 5-uy ", category: "Tormoz kolodkalari qoplag'ichlari ishlab chiqarish", volume: "1" },
+ ];
+
+export const poliamidManufacturers = [
+  { id: 17, name: "ANDIJON AVTO GAZ mas'uliyati cheklangan jamiyati", inn: "205741042", address: "Andijon viloyati, Xonobod sh. Anhor MFY, O'sh ko`chasi", category: "Poliamid ishlab chiqarish", volume: "1294" },
+ ];
+
+export const qalamManufacturers = [
+  { id: 22, name: "TEMUR ABDIMIRATOV oilaviy korxonasi", inn: "33454302", address: "Surxondaryo viloyati, Qiziriq tumani, Yangi hayot QFY Mustaqillik mahallasi, Gulobod 2 ko'chasi, 7/S175-uy", category: "Qalam sterjenlari ishlab chiqarish", volume: "1" },
+  { id: 23, name: "HASAN A`LOCHI xususiy korxonasi", inn: "32286162", address: "Surxondaryo viloyati, Muzrabot tumani, Taskent shaharchasi Gulobod mahallasi, O'roncha ko'chasi, 9 b-uy", category: "Qalam sterjenlari ishlab chiqarish", volume: "1" },
+ ];
+
+export const pishloqManufacturers = [
+  { id: 27, name: "AZIZ GOLD MILK oilaviy korxonasi", inn: "25602361", address: "Toshkent viloyati, Qibray tumani, Chinobod QFY O'tkir mahallasi, Bahor ko'chasi, 19a-uy", category: "Pishloq va tvorog ishlab chiqarish", volume: "10155" },
+  { id: 28, name: "PUREMILKY WORKS mas`uliyati cheklangan jamiyati", inn: "29400813", address: "Samarqand viloyati, Tayloq tumani, Qo'rg'oncha QFY Qo‘rg‘oncha mahallasi, Qo‘rg‘oncha qishlog‘i", category: "Pishloq va tvorog ishlab chiqarish", volume: "3561" },
+  { id: 29, name: "IBRAGIMOV XUSAN NASIROVICH xususiy korxonasi", inn: "22745261", address: "Toshkent shahri, Yunusobod tumani Bobodexqon MFY, Mirzaobod ko`chasi, 42- va 50-uylar", category: "Pishloq va tvorog ishlab chiqarish", volume: "1600" },
+  { id: 30, name: "ZIYRAAT mas`uliyati cheklangan jamiyati", inn: "27557952", address: "Toshkent shahri, Mirzo Ulug'bek tumani BUYUK IPAK YO'LI KO'CHASI, 434-UY", category: "Pishloq va tvorog ishlab chiqarish", volume: "544" },
+  { id: 31, name: "PRO BIO FOODS mas`uliyati cheklangan jamiyati", inn: "31281866", address: "Toshkent shahri, Yakkasaroy tumani BOG'SAROY MFY, MIROBOD KO'CHASI, 104002-UY", category: "Pishloq va tvorog ishlab chiqarish", volume: "509" },
+];
+
 export const mockManufacturers = notebookManufacturers;
+
+///////////////////////////////////////////////////////////////
 
 export const notebookImportCountries = [
   { country: "Xitoy", volume: "1363504,51", value: "$1348,6", share: 94.91 },
@@ -70,8 +183,31 @@ export const hairCareImportCountries = [
   { country: "Latviya", volume: "12980,075", value: "$8,244", share: 4 },
 ];
 
-// Default to notebooks
+export const fosforImportCountries = [
+  { country: "Xitoy", volume: "112301", value: "$493,659", share: 89.43 },
+  { country: "Turkiya", volume: "6000", value: "$23,661", share: 4.78 },
+  { country: "Rossiya", volume: "4000,216", value: "$27,016", share: 3.19 },
+  { country: "Koreya", volume: "2440", value: "$4,332", share: 1.94 },
+  { country: "Italiya", volume: "800", value: "$9,468", share: 0.64 },
+];
+
+export const tormozImportCountries = [
+  { country: "Xitoy", volume: "295014,24", value: "$605,912", share: 55 },
+  { country: "Turkiya", volume: "168897,78", value: "$532,048", share: 31 },
+  { country: "Rossiya", volume: "41419,61", value: "$47,662", share: 8 },
+  { country: "Ukraina", volume: "29769", value: "$32,735", share: 6 },
+  { country: "ОБЪЕД. АРАБСКИЕ ЭМИРАТЫ", volume: "2681,05", value: "$3,805", share: 0 },
+];
+
+export const poliamidImportCountries = [];
+
+export const qalamImportCountries = [];
+
+export const pishloqImportCountries = [];
+
 export const mockImportCountries = notebookImportCountries;
+
+///////////////////////////////////////////////////////////////
 
 export const notebookExportCountries = [
   { country: "Qozog'iston", volume: "224,8", value: "$2,54", share: 62.38 },
@@ -89,8 +225,19 @@ export const hairCareExportCountries = [
   { country: "Turkmaniston", volume: "3398,8", value: "$4,305", share: 1 },
 ];
 
-// Default to notebooks
+export const fosforExportCountries = [];
+
+export const tormozExportCountries = [];
+
+export const poliamidExportCountries = [];
+
+export const qalamExportCountries = [];
+
+export const pishloqExportCountries = [];
+
 export const mockExportCountries = notebookExportCountries;
+
+////////////////////////////////////////////////////////////////
 
 export const mockImportedProducts = [
   { product: "Elektron Komponentlar", hsCode: "8542.31", volume: "1,250 dona", value: "$8.5M" },
@@ -126,8 +273,9 @@ export const hairCareProductionData = [
   { month: "Iyun", local: 3250, export: 2450, import: 3680 },
 ];
 
-// Default to notebooks
 export const mockProductionData = notebookProductionData;
+
+///////////////////////////////////////////////////////////////
 
 export const notebookMarketConcentration = [
   { name: "Kompaniya A", value: 22 },
@@ -147,7 +295,6 @@ export const hairCareMarketConcentration = [
   { name: "Boshqalar", value: 11 },
 ];
 
-// Default to notebooks
 export const mockMarketConcentration = notebookMarketConcentration;
 
 export const notebookMarketBalance = [
@@ -176,8 +323,9 @@ export const hairCareMarketBalance = [
   { month: "Okt", supply: 7000, demand: 6800 },
 ];
 
-// Default to notebooks
 export const mockMarketBalance = notebookMarketBalance;
+
+///////////////////////////////////////////////////////////////
 
 export const notebookCompetitiveMetrics = [
   { metric: "Bozor Xilma-xilligi", current: 75, previous: 68 },
@@ -197,5 +345,4 @@ export const hairCareCompetitiveMetrics = [
   { metric: "Innovatsion Mahsulotlar", current: 72, previous: 65 },
 ];
 
-// Default to notebooks
 export const mockCompetitiveMetrics = notebookCompetitiveMetrics;

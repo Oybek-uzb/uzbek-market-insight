@@ -11,7 +11,16 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { mockManufacturers, notebookManufacturers, hairCareManufacturers } from "@/lib/mockData";
+import {
+  mockManufacturers,
+  notebookManufacturers,
+  hairCareManufacturers,
+  fosforManufacturers,
+  tormozManufacturers,
+  poliamidManufacturers,
+  qalamManufacturers,
+  pishloqManufacturers
+} from "@/lib/mockData";
 import { SelectUI } from "@/components/select-ui";
 
 export default function Manufacturers() {
@@ -25,7 +34,22 @@ export default function Manufacturers() {
 
   // Get manufacturers based on selected category
   const getManufacturers = () => {
-    return category === 'soch' ? hairCareManufacturers : notebookManufacturers;
+    switch (category) {
+      case 'soch':
+        return hairCareManufacturers;
+      case 'fosfor':
+        return fosforManufacturers;
+      case 'tormoz':
+        return tormozManufacturers;
+      case 'poliamid':
+        return poliamidManufacturers;
+      case 'qalam':
+        return qalamManufacturers;
+      case 'pishloq':
+        return pishloqManufacturers;
+      default:
+        return notebookManufacturers;
+    }
   };
 
   // Filter data based on search term and selected category
@@ -36,14 +60,42 @@ export default function Manufacturers() {
 
   // Get category title
   const getCategoryTitle = () => {
-    return category === 'soch' ? 'Soch uchun vositalar ishlab chiqaruvchilari' : 'Bloknot ishlab chiqaruvchilari';
+    switch (category) {
+      case 'soch':
+        return 'Soch uchun vositalar ishlab chiqaruvchilari';
+      case 'fosfor':
+        return 'Fosfor kislotasi ishlab chiqaruvchilari';
+      case 'tormoz':
+        return 'Tormoz kolodkalari qoplagichi ishlab chiqaruvchilari';
+      case 'poliamid':
+        return 'Poliamid ishlab chiqaruvchilari';
+      case 'qalam':
+        return 'Qalam sterjeni ishlab chiqaruvchilari';
+      case 'pishloq':
+        return 'Pishloq va tvorog ishlab chiqaruvchilari';
+      default:
+        return 'Bloknot ishlab chiqaruvchilari';
+    }
   };
 
   // Get category description
   const getCategoryDescription = () => {
-    return category === 'soch' 
-      ? 'Soch parvarishi uchun mahsulotlar ishlab chiqaruvchi korxonalar ro\'yxati' 
-      : 'Yozuv va yorliq ishlab chiqaruvchi korxonalar ro\'yxati';
+    switch (category) {
+      case 'soch':
+        return 'Soch parvarishi uchun mahsulotlar ishlab chiqaruvchi korxonalar ro\'yxati';
+      case 'fosfor':
+        return 'Fosfor kislotasi ishlab chiqaruvchi korxonalar ro\'yxati';
+      case 'tormoz':
+        return 'Tormoz kolodkalari qoplagichi ishlab chiqaruvchi korxonalar ro\'yxati';
+      case 'poliamid':
+        return 'Poliamid ishlab chiqaruvchi korxonalar ro\'yxati';
+      case 'qalam':
+        return 'Qalam sterjeni ishlab chiqaruvchi korxonalar ro\'yxati';
+      case 'pishloq':
+        return 'Pishloq va tvorog ishlab chiqaruvchi korxonalar ro\'yxati';
+      default:
+        return 'Yozuv va yorliq ishlab chiqaruvchi korxonalar ro\'yxati';
+    }
   };
 
   return (
@@ -57,8 +109,6 @@ export default function Manufacturers() {
         </div>
         <SelectUI onCategoryChange={handleCategoryChange} />
       </div>
-
-
 
       <Card>
         <CardHeader>
