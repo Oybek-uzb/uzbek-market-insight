@@ -247,7 +247,8 @@ export default function Dashboard() {
           <Card className="p-6">
             <div className="flex items-center gap-2 mb-6">
               <Globe className="w-5 h-5 text-success" />
-              <h2 className="text-lg font-bold text-success">Eksport</h2>
+              <h2 className="text-lg font-bold text-success">
+                Eksport</h2>
             </div>
 
             <div className="grid grid-cols-3 gap-6">
